@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+        <h1>Database Test</h1>
+        <p>Your goal for this is to:</p>
+        <ol>
+            <li><strike>Populate a standard form, and have that submit into a database</strike></li>
+        <li>Retrieve database entries to build a newsletter template</li>
+        <li>Retrieve database entries to populate text fields in form</li>
+        <li>set up chron job to automatically delete entries that are more than a couple days old.</li>
+        </ol>
+        </div>
+    </div>
+</div>
+
+<br><br><br>
+
+<form action="{% url 'output' %}" method="POST" id="test_form">
+{% csrf_token %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-8" style="border-bottom: 1px solid #dddddd; padding-bottom: 30px;">
+            <div class="row">
+                <div class="col-2">
+                    <h5 style="margin-top: 21px;">Tile 1</h5>
+                </div>
+                <div class="col-3">
+                    <label>Location</label>
+                    <input type="text" class="form-control" name="tile_1_location">
+                </div>
+                <div class="col-7">
+                    <label>Headline</label>
+                    <input type="text" class="form-control" name="tile_1_headline">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-8" style="border-bottom: 1px solid #dddddd; padding-bottom: 30px;">
+            <div class="row">
+                <div class="col-2">
+                    <h5 style="margin-top: 21px;">Tile 2</h5>
+                </div>
+                <div class="col-3">
+                    <label>Location</label>
+                    <input type="text" class="form-control" name="tile_2_location">
+                </div>
+                <div class="col-7">
+                    <label>Headline</label>
+                    <input type="text" class="form-control" name="tile_2_headline">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-8" style="border-bottom: 1px solid #dddddd; padding-bottom: 30px;">
+            <div class="row">
+                <div class="col-2">
+                    <h5 style="margin-top: 21px;">Tile 3</h5>
+                </div>
+                <div class="col-3">
+                    <label>Location</label>
+                    <input type="text" class="form-control" name="tile_3_location">
+                </div>
+                <div class="col-7">
+                    <label>Headline</label>
+                    <input type="text" class="form-control" name="tile_3_headline">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-8" style="border-bottom: 1px solid #dddddd; padding-bottom: 30px;">
+            <div class="row">
+                <div class="col-2">
+                    <h5 style="margin-top: 21px;">Tile 4</h5>
+                </div>
+                <div class="col-3">
+                    <label>Location</label>
+                    <input type="text" class="form-control" name="tile_4_location">
+                </div>
+                <div class="col-7">
+                    <label>Headline</label>
+                    <input type="text" class="form-control" name="tile_4_headline">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-8" style="border-bottom: 1px solid #dddddd; padding-bottom: 30px;">
+            <div class="row">
+                <div class="col-2">
+                    <h5 style="margin-top: 21px;">Tile 5</h5>
+                </div>
+                <div class="col-3">
+                    <label>Location</label>
+                    <input type="text" class="form-control" name="tile_5_location">
+                </div>
+                <div class="col-7">
+                    <label>Headline</label>
+                    <input type="text" class="form-control" name="tile_5_headline">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-8" style="border-bottom: 1px solid #dddddd; padding-bottom: 30px;">
+            <div class="row">
+                <div class="col-2">
+                    <h5 style="margin-top: 21px;">Tile 6</h5>
+                </div>
+                <div class="col-3">
+                    <label>Location</label>
+                    <input type="text" class="form-control" name="tile_6_location">
+                </div>
+                <div class="col-7">
+                    <label>Headline</label>
+                    <input type="text" class="form-control" name="tile_6_headline">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</div>
+
+</form>
+
+
+
+
+{% endblock %}
+
+
+
+
+
