@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+        <h1>Form</h1>
+
+        </div>
+    </div>
+</div>
+
+<br><br><br>
+
+<form method="POST" id="test_form">
+{% csrf_token %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <input type="text" class="form-control" name="newsletter_campaign_id" value="{{obj.newsletter_campaign_id}}">
+
+            <hr>
+            <hr style="margin: 30px 0 30px 0;">
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-top: 30px;">
+        <div class="col">
+                <input class="form-check-input" type="checkbox" name="store_db">
+                <label class="form-check-label">
+                  Store to Database
+                </label>
+                <br><br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</div>
+
+
+    
+
+</form>
+
+
+{% endblock %}
+
+
+
+
+

@@ -1,38 +1,57 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import botwTest
+from .forms import botwTestForm
+from django.shortcuts import get_object_or_404
 
 def home_view(request):
-    return render(request,'home.html')
+    data = botwTest.objects.all()
+    context={
+        'data': data,
+    }
+    return render(request,'home.html', context)
 
-def home_output_view(request):
+
+def edit_view(request, pk):
+    context = {}
+    data = get_object_or_404(botwTest, pk = pk)
+    form = botwTestForm(request.POST or None, instance = data)
+    if form.is_valid(): 
+        form.save()
+        return redirect('home')
+    context = {
+        # 'form': form,
+        'data': data,
+    }
+    return render(request,'form.html', context)
+
+
+def preview_view(request, pk):
+    data = botwTest.objects.get(pk=pk)
+    context = {
+        'data': data,
+    }
+    return render(request,'output.html', context)
+
+
+def form_view(request):
+    form = botwTestForm(request.POST)
+    context = {}
+    # def store_results(everything):
     if request.method == 'POST':
-        post=botwTest()
-        post.tile_1_location = request.POST.get('tile_1_location')
-        post.tile_1_headline = request.POST.get('tile_1_headline')
-        post.tile_2_location = request.POST.get('tile_2_location')
-        post.tile_2_headline = request.POST.get('tile_2_headline')
-        post.tile_3_location = request.POST.get('tile_3_location')
-        post.tile_3_headline = request.POST.get('tile_3_headline')
-        post.tile_4_location = request.POST.get('tile_4_location')
-        post.tile_4_headline = request.POST.get('tile_4_headline')
-        post.tile_5_location = request.POST.get('tile_5_location')
-        post.tile_5_headline = request.POST.get('tile_5_headline')
-        post.tile_6_location = request.POST.get('tile_6_location')
-        post.tile_6_headline = request.POST.get('tile_6_headline')
-        post.save()
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    # store_results(form)
 
-        
+    newsletter_campaign_id = request.POST.get('newsletter_campaign_id')
 
-        context = {
-            'stuff': {
-                'location': post.tile_1_location,
-                'headline': post.tile_1_headline,
-            }
-        }
+    context["output"] = newsletter_campaign_id
 
 
-        return render(request, 'output.html', context)  
 
-    else:
-        return render(request,'output.html')
+            
     
+    return render(request, 'form.html', context)
+
+
+

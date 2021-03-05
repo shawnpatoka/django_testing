@@ -21,6 +21,8 @@ from test_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_view, name='home'),
-    path('output/', views.home_output_view, name='output'),
+    path('form/', views.form_view, name='form'),
+    path('edit/<int:pk>', views.edit_view, name="edit"),
+    path('preview/<int:pk>', views.preview_view, name="preview"),
 
 ]
